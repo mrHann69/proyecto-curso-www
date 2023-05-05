@@ -19,6 +19,7 @@ services:
       - 4000:4000
     volumes:
       - .:/app/
+    command: npm run dev && npm install
     depends_on:
       - db
     

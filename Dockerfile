@@ -1,4 +1,4 @@
-FROM node:18.6.0
+FROM node:18
 WORKDIR /app
 COPY ./package*.json ./
 RUN npm cache clean --force
