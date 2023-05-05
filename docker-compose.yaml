@@ -1,0 +1,24 @@
+version: "3"
+services:
+  db:
+    image: postgre:14
+    ports:
+      - 5432:5432
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data
+    enviroment:
+      - POSTGRES_DB=db_proyecto_www
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+  app:
+    restart: on-failure
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 4000:4000
+    volumes:
+      - .:/app/
+    depends_on:
+      - db
+    
