@@ -6,10 +6,8 @@ services:
       - 5432:5432
     volumes:
       - ./postgres_data:/var/lib/postgresql/data
-    environment:
-      - POSTGRES_DB=db_proyecto_www
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+    env_file:
+      - .env   
   app:
     restart: on-failure
     build:
