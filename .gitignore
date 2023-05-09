@@ -1,0 +1,2 @@
+#ignoring postgres_data folder 
+postgres_data/

@@ -1,0 +1,23 @@
+#!/bin/bash
+
+DOCKER_STATUS=$(systemctl status docker)
+
+if echo "$DOCKER_STATUS" | grep -q "Active: active (running)"; then 
+    echo "Docker is active"
+else
+    echo "Please activate Docker with sudo systemctl start docker" 
+    exit 1
+fi
+
+CONTAINER_NAME="proyecto-curso-www-db-1"
+CONTAINER_STATUS=$(docker ps) 
+
+if echo "$CONTAINER_STATUS" | grep -q "$CONTAINER_NAME"; then 
+    echo "Container is running\n" 
+    echo "Initializing psql" 
+else 
+    echo "Container is not running or ensure if the container has the name $CONTAINER_NAME"
+    exit 1
+fi
+
+docker exec -it proyecto-curso-www-db-1 psql -U postgres -d db_proyecto_www
