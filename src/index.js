@@ -1,3 +1,10 @@
-for(let i=0; i<= 20; i++) console.log("holaaaa estoy vivo!!!!!");
-for(let i=0; i<= 20; i++) console.log("holaaaa otra vez!!!!!");
-for(let i=0; i<= 20; i++) console.log("otra vez!!!!!");
+import  dotenv  from 'dotenv';
+import app from './app.js';
+
+dotenv.config();
+
+const PORT = process.env.PORT || 4000;
+
+app.listen(PORT, ()=>{
+    console.log(`Server running on port ${PORT}`);
+}); 
