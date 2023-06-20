@@ -7,7 +7,7 @@ services:
     volumes:
       - ./postgres_data:/var/lib/postgresql/data
     environment:
-      - POSTGRES_DB=db_proyecto_www
+      - POSTGRES_DATABASE=db_proyecto_www
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
   app:
