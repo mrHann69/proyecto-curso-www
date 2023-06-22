@@ -1,9 +1,7 @@
-FROM node:18
-WORKDIR /app
-COPY ./package*.json ./
-RUN npm cache clean --force
+FROM node:latest
+RUN mkdir /code
+WORKDIR /code
+COPY package*.json /code/
+ARG . /code/
 RUN npm install
-COPY . .
-EXPOSE 4000
-# CMD ["node","src/index.js"]
-
+RUN npm update -D
