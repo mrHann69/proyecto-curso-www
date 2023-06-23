@@ -1,8 +1,10 @@
 import { DataTypes } from 'sequelize';
 import sequelize from "../../db/pgdatabase.js";
+import bcrypt from 'bcrypt';
+
 
 const User = sequelize.define('User', {
-  username: {
+  name: {
     type: DataTypes.STRING,
     allowNull: false
   },
@@ -19,7 +21,11 @@ const User = sequelize.define('User', {
     allowNull: false,
     unique: true
   },
-  phone: {
+  telephone: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  roluser: {
     type: DataTypes.STRING,
     allowNull: false
   }
@@ -28,6 +34,10 @@ const User = sequelize.define('User', {
   timestamps: true
 });
 
+
+User.isValidPassword = function (password, hashedPassword) {
+  return bcrypt.compare(password, hashedPassword).catch(err=>console.error("error while comparing passwords",err));
+}
 
 // User.sync({ force: true })
 User.sync({ alter: true, logging: console.log })
