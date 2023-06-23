@@ -21,10 +21,11 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="big-box">
-      <div className="little-box">
+    <div className="big-box-1">
+      <div className="little-box-1">
+        <h1>Login Form</h1>
         <form onSubmit={handleSubmit}>
-          <div className="form-group">
+          <div className="form-group-1">
             <label htmlFor="email">Email</label>
             <input
               type="email"
@@ -33,7 +34,7 @@ const LoginForm = () => {
               required
             />
           </div>
-          <div className="form-group">
+          <div className="form-group-1">
             <label htmlFor="password">Password</label>
             <input
               type="password"
@@ -43,9 +44,9 @@ const LoginForm = () => {
             />
           </div>
           {errorLoginMessage ? (
-            <div className="errorLogin">{errorLoginMessage}</div>
+            <div className="errorLogin-1">{errorLoginMessage}</div>
           ) : null}
-          <div className="form-button">
+          <div className="form-button-1">
             <button type="submit">Log in</button>
           </div>
           <div className="register">

@@ -4,7 +4,7 @@
     align-items: center;
 }
 
-.big-box {
+.big-box-1 {
     display: flex;
     height: 100vh;
     width: 100%;
@@ -13,30 +13,31 @@
     rgb(31, 205, 136 ));
 }
     
-.little-box {
+.little-box-1 {
     display: flex;
     flex-direction: column;
     background-color: aliceblue;
     border-radius: 10px;
-    padding: 0px 20px;
-    height: 80vh;
-    width: 30vw;
-    
-    justify-content: space-around;
+    padding: 50px 30px;
+    height: 65vh;
+    width: 50vh;
+    justify-content:space-around;
 }
 
 form {
     margin-bottom: 50px;
     padding: 10px;
     width: 100%;
+    align-items: center;
 }
 
-form .form-group{
+form .form-group-1{
     margin-bottom: 10px;
     width: 100%;
+    align-items: last baseline;
 }
 
-.little-box form input {
+.little-box-1 form input {
     display: block;
     padding: 10px;
     width: 100%;
@@ -45,16 +46,22 @@ form .form-group{
     font-size: 16px;
 }
 
-.little-box form button{
+.little-box-1 form button{
     padding: 7px 25px;
     background-color: green;
     color: aliceblue;
     font-size: 16px;
     cursor: pointer;
+
+    display:flex;
 }
 
-.little-box form button:hover{
+.little-box-1 form button:hover{
     background-color: rgb(0, 0, 0);
     color: rgb(0, 136, 255);
     border: 2px solid rgb(100, 150, 10);
+}
+
+.register {
+    padding-top: 20px;
 }
