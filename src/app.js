@@ -10,6 +10,8 @@ testConnection();
 
 import cors from 'cors';
 
+import "./middlewares/auth.js";
+
 const app = express();
 
 const corsOptions = {

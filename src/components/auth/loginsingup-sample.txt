@@ -1,0 +1,42 @@
+ejemplo de como usar el endpoint de login y singup
+
+para registrarse
+url:
+    http://localhost:4000/api/v1/register
+
+body necesario:
+{
+	"name": "matheo",
+	"password": "1234523",
+	"address": "cra56f0424232",
+	"email": "math69@algo.com",
+	"telephone": "123222789",
+	"roluser": "customer"
+}
+
+respuesta:
+{
+	"message": "signup successful, you can now login",
+	"user": {
+		"name": "matheo",
+		"email": "math69@algo.com",
+		"telephone": "123222789",
+		"address": "cra56f0424232",
+		"roluser": "customer"
+	},
+	"x_access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoibWF0aGVvIiwiZW1haWwiOiJtYXRoNjlAYWxnby5jb20iLCJ0ZWxlcGhvbmUiOiIxMjMyMjI3ODkiLCJwYXNzd29yZCI6IiQyYiQxMCQwUWtNdVNtQTdQbERyYnRKV09kSFhPTURkcUtOQ0xxTElLZmVHVnM4QnRhenk2NGM0TmRLLiIsInJvbHVzZXIiOiJjdXN0b21lciIsImlhdCI6MTY4NzQ5MjAyNCwiZXhwIjoxNjg3NTAyODI0fQ.xGfd22H9k2Vz-f6c3-0tlOXGm3ORMY5EwN6roxTIrVE"
+}
+
+
+para hacer login
+
+body necesario:
+{
+	"email":"math69@algo.com",
+	"password":"1234523"
+}
+
+respuesta:
+{
+	"x_access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoibWF0aGVvIiwiZW1haWwiOiJtYXRoNjlAYWxnby5jb20iLCJ0ZWxlcGhvbmUiOiIxMjMyMjI3ODkiLCJwYXNzd29yZCI6IiQyYiQxMCQwUWtNdVNtQTdQbERyYnRKV09kSFhPTURkcUtOQ0xxTElLZmVHVnM4QnRhenk2NGM0TmRLLiIsInJvbHVzZXIiOiJjdXN0b21lciIsImlhdCI6MTY4NzQ5MjEzNiwiZXhwIjoxNjg3NTAyOTM2fQ.m4zX_EV6R60Ir67hhDNztNsGOvK1rTtMpppNfom2O3s"
+}
