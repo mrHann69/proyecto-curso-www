@@ -1,17 +1,10 @@
-
-import User from "../db/db-models/userModel.js";
+import User from "../components/user/model.js";
 import passport from 'passport';
 import LocalStrategy from 'passport-local';
 import { Strategy, ExtractJwt } from 'passport-jwt';
 import bcrypt from 'bcrypt';
 
-import dotenv from 'dotenv';
-
-dotenv.config();
-
-
-
-
+// import config from '../../config/config.js';
 
 /** SIGNUP & SIGN IN  with postgres */
 passport.use('signup', new LocalStrategy(
@@ -31,16 +24,17 @@ passport.use('signup', new LocalStrategy(
             if (userAlready !== null) return done(null, false, { message: 'email ready registered' });
 
             // take data from request
-            const { userid, name, roluser } = req.body;
+            const { name, telephone, address, roluser } = req.body;
             const hashedPassword = await bcrypt.hash(reqPassword, 10);
 
             // save new user on database
             const user = await User.create(
                 {
-                    userid,
                     name,
-                    roluser,
                     email: sanitizedEmail,
+                    telephone,
+                    address,
+                    roluser,
                     password: hashedPassword
                 });
             if (user === null || !user) return done(null, false, { message: 'signup failed' });
@@ -50,7 +44,8 @@ passport.use('signup', new LocalStrategy(
         } catch (error) {
             return done(error);
         }
-    }));
+    })
+);
 
 
 passport.use('login', new LocalStrategy(
@@ -66,15 +61,14 @@ passport.use('login', new LocalStrategy(
 
             const userAlready = await User.findOne({ where: { email: sanitizedEmail } });
             if (userAlready === null || userAlready === undefined) {
-                console.log("user not exist");
-                return done(null, false, { message: 'user dont exist' });
+                return done(null, false, { message: 'user dont exist😭' });
             }
-
+            console.log("user: ", userAlready);
             const validation = await User.isValidPassword(reqPassword, userAlready.password);
+            console.log("validation:", validation);
 
             if (!validation) {
-                console.log("user password wrong!");
-                return done(null, false, { message: 'wrong password' });
+                return done(null, false, { message: 'wrong password😭' });
             }
             delete req.body.email;
             delete req.body.password;
@@ -82,7 +76,8 @@ passport.use('login', new LocalStrategy(
         } catch (error) {
             return done(error);
         }
-    }));
+    })
+);
 
 
 
@@ -104,72 +99,3 @@ passport.use('jwt', new Strategy({
         return done(error)
     }
 }));
-
-
-// passport.use('jwt2',new Strategy({
-//     secretOrKey: `${process.env.TOKEN_SECRET}`,
-//     jwtFromRequest: ExtractJwt.fromHeader('x_access_token')
-// }, async (token, done) => {
-//     try {
-//         if(!jwtFromRequest) {return done(null, false, {msg: "no token provided"}) }
-
-//         const decoded = jwt.verify(jwtFromRequest, process.env.TOKEN_SECRET);
-
-
-//         return done(null, token.user)
-//     } catch (error) {
-//         done(error)
-//     }
-// }));
-
-
-
-/** SIGNUP & SIGN IN  with mongo */
-// passport.use('signup', new localStrategy({
-//     usernameField: 'email',
-//     passwordField: 'password'
-// }, async (email, password, done) => {
-//     try {
-//         const user = await UserC.create({ email, password });
-//         return done(null, user);
-//     } catch (error) {
-//         done(error)
-//     }
-// }));
-
-
-// passport.use('login', new localStrategy({
-//     usernameField: 'email',
-//     passwordField: 'password'
-// }, async (email, password, done) => {
-//     try {
-//         const user = await UserC.findOne({ email });
-//         if (user === null){
-//             console.log(`este es el user 1: ${user}`);
-//             done(null, false, { message: 'email not found' });
-//             return;
-//         }
-//         console.log(`este es el user 2: ${user}`);
-
-//         const validate = await user.isValidPassword(password);
-//         console.log("esta es la validacion",validate);
-
-//         if(!validate) return done(null, false, { message: 'wrong password'});
-
-//         return done(null, user, { message: 'Login successfull'});
-//     } catch (error) {
-//         return done(error)
-//     }
-// }));
-
-
-
-//     secretOrKey: `${process.env.TOKEN_SECRET}`,
-//     jwtFromRequest: ExtractJwt.fromBodyField('x_access_token')
-// }, async (token, done) =>{
-//     try {
-//         return done(null, token.user)
-//     } catch (error) {
-//         done(error)
-//     }
-// }));
