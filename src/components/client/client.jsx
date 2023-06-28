@@ -32,7 +32,7 @@ function Client() {
           <h2>Id. complete name</h2>
           <h2>Direccion</h2>
           <h2>Email</h2>
-          <h2>Telephone XD</h2>
+          <h2>Telephone FFFFFFFFFFFFFFFFFFFFFFFFFF</h2>
         </div>
       </section>
     </div>
