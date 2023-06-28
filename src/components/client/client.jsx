@@ -26,13 +26,13 @@ function Client() {
         </button>
       </header>
       <section>
-        
+
         <div className="container-info">
           <h3>Perfil_1</h3>
           <h2>Id. complete name</h2>
           <h2>Direccion</h2>
           <h2>Email</h2>
-          <h2>Telephone</h2>
+          <h2>Telephonex</h2>
         </div>
       </section>
     </div>
