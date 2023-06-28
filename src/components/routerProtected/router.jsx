@@ -7,14 +7,15 @@ import RegisterForm from "../login/register/comp_registro.jsx"
 import img from "../../public/default.jpg"
 
 
-function Router(token, redirectPath='/login') {
+function Router(token, redirectPath="/login") {
     if(!token){
         return <Navigate to={redirectPath}/>
     }
   return (
       <Routes>
-        <Route path="*" element={<img src={img} alt='' />}></Route>
+        <Route path="/*" element={<img src={img} alt='' />}></Route>
         <Route path="/login" element={<LoginForm/>}></Route>
+        <Route path="" element={<Navigate to={"/login"}/>}></Route>
         <Route path="/register" element={<RegisterForm/>}></Route>
         <Route path="/admin" element={img}></Route>
         <Route path="/client" element={<Client/>}></Route>
