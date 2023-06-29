@@ -6,7 +6,6 @@ import DeliveryMan from "../deliveryMan/deliveryMan.jsx"
 import LoginForm from "../login/login.jsx"
 import RegisterForm from "../login/register/comp_registro.jsx"
 import img from "../../public/default.jpg"
-import Dashboard from '../dashboard/dashboard.jsx';
 import Orders from '../orders/orders.jsx';
 import Reports from '../reports/reports.jsx';
 import Management from '../management/management.jsx';
@@ -23,7 +22,6 @@ function Router(token, redirectPath="/login") {
         <Route path="/register" element={<RegisterForm/>}></Route>
         
         <Route path="/admin" element={<Admin/>}></Route>
-        <Route path="/admin/dashboard" element={<Dashboard />}></Route>
         <Route path="/admin/orders" element={<Orders />}></Route>
         <Route path="/admin/reports" element={<Reports />}></Route>
         <Route path="/admin/management" element={<Management />}></Route>
