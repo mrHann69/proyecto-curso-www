@@ -1,32 +1,33 @@
-import { Sequelize } from 'sequelize';
-import config from "../config/config.js";
-import setupModels from './setupModels.js';
+// import { Sequelize } from 'sequelize';
+// import config from "../config/config.js";
+// import setupModels from './setupModels.js';
 
-const { POSTGRES_URI, POSTGRES_URI_DOCKER, POSTGRES_USERNAME, POSTGRES_HOST, POSTGRES_DATABASE, POSTGRES_PASSWORD } = config;
+const { Sequelize } = require('sequelize');
+const config = require('../config/config.js');
+const setupModels = require('./setupModels.js');
+
+const { POSTGRES_URI_DOCKER,POSTGRES_URI } = config;
 
 const options = {
   host: "db",
   dialect: "postgres",
-  pool: {
-    max: 5,
-    min: 0,
-    acquire: 30000,
-    idle: 10000
-  }
 } 
 const sequelize = new Sequelize(POSTGRES_URI_DOCKER, options);
+// const sequelize = new Sequelize(POSTGRES_URI, options);
 
 setupModels(sequelize);
 
 
-export const testConnection = async () => {
-  try {
-    await sequelize.authenticate();
-    console.log('Connection has been established successfully.');
-  } catch (error) {
-    console.error('Unable to connect to the database:', error);
-  }
-}
+// const testConnection = async () => {
+//   try {
+//     await sequelize.authenticate();
+//     console.log('Connection has been established successfully.');
+//   } catch (error) {
+//     console.error('Unable to connect to the database:', error);
+//   }
+// }
 
 
-export default sequelize;
+// export default sequelize;
+module.exports = sequelize
+// module.exports =testConnection

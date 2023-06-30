@@ -1,4 +1,6 @@
-import User from "./model.js"; 
+// import User from "./model.js"; 
+const User = require( "./model.js");
+
 
 
 // Create
@@ -68,4 +70,5 @@ async function deleteUser(userId) {
 }
 const userController = { createUser, getUsers, getUserById, updateUser, deleteUser };
 
-export default userController;
+// export default userController;
+module.exports =userController;

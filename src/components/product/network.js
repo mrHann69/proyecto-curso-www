@@ -1,5 +1,8 @@
-import express from "express";
-import userController from './controller.js';
+// import express from "express";
+// import userController from './controller.js';
+
+const express = require('express');
+const userController = require('./controller.js')
 
 const router = express.Router();
 
@@ -51,4 +54,5 @@ router.delete('/product', async (req, res) => {
     }
 });
 
-export default router;
+// export default router;
+module.exports= router;

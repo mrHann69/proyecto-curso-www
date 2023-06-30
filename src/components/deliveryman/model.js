@@ -1,14 +1,13 @@
-import { DataTypes } from 'sequelize';
-import sequelize from "../../db/pgdatabase.js";
-import bcrypt from 'bcrypt';
+// import { DataTypes, Model } from 'sequelize';
+// import { SERVICE_TABLE } from '../service/model.js';
 
-const Deliveryman = sequelize.define('Deliveryman', {
+const { DataTypes, Model }= require('sequelize');
+const { SERVICE_TABLE } = require ('../service/model.js');
 
-  id: {
-    type: DataTypes.INTEGER,
-    primaryKey: true
-  },
 
+const DELIVERYMAN_TABLE = 'deliveryman';
+
+const DeliverymanSchema = {
   name: {
     type: DataTypes.STRING,
     allowNull: false
@@ -29,21 +28,35 @@ const Deliveryman = sequelize.define('Deliveryman', {
   telephone: {
     type: DataTypes.STRING,
     allowNull: false
+  },
+  idService: {
+    field: 'id_service',
+    allowNull: true,
+    type: DataTypes.INTEGER,
+    references: {
+      model: SERVICE_TABLE,
+      key: 'id',
+    },
   }
-}, {
-  tableName: 'Deliveryman',
-  timestamps: true
-});
-
-Deliveryman.associate= function(models){
-  Deliveryman.hasMany(models.Service,{
-    foreignKey: 'DeliveryManId',
-    as: 'services',
-  })
 }
 
-Deliveryman.sync({ alter: true, logging: console.log })
-  .then(() => console.log("Table Deliveryman created"))
-  .catch((err)=> console.error("Table Deliveryman not created ", err))
+class Deliveryman extends Model {
+  static associate(models) {
+    this.hasMany(models.Service, {
+      foreignKey: 'id',
+      as: 'service',
+    })
+  }
+  static config(sequelize){
+    return {
+      sequelize,
+      tableName: DELIVERYMAN_TABLE,
+      modelName: 'Deliveryman',
+      timestamps: true 
+    }
+  }
+}
 
-export default Deliveryman; 
+
+// export { DELIVERYMAN_TABLE, DeliverymanSchema, Deliveryman}; 
+module.exports= { DELIVERYMAN_TABLE, DeliverymanSchema, Deliveryman}; 

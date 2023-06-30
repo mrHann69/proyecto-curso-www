@@ -1,6 +1,8 @@
-import { DataTypes } from 'sequelize';
-import sequelize from "../../db/pgdatabase.js";
+// import { DataTypes } from 'sequelize';
+// import sequelize from "../../db/pgdatabase.js";
 
+const { DataTypes } = require('sequelize');
+const sequelize = require( "../../db/pgdatabase.js");
 
 const ServiceShipping= sequelize.define('ServiceShipping', {
   id: {
@@ -31,5 +33,7 @@ const ServiceShipping= sequelize.define('ServiceShipping', {
 });
 
 
-export default ServiceShipping;
+// export default ServiceShipping;
+module.exports = ServiceShipping;
+
  

@@ -32,5 +32,6 @@ const verifyRol = {
     verifyOperator
 }
 
-export default verifyRol;
+// export default verifyRol;
+module.export = verifyRol;
 

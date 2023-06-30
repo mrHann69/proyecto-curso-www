@@ -1,9 +1,15 @@
-import express from "express";
+// import express from "express";
+// import passport from 'passport';
+// import Jwt from 'jsonwebtoken';
+// import config from '../../config/config.js';
 
-import passport from 'passport';
-import Jwt from 'jsonwebtoken';
+const express = require("express");
 
-import config from '../../config/config.js';
+const passport = require('passport');
+const Jwt = require('jsonwebtoken');
+
+const config = require('../../config/config.js');
+
 
 const router = express.Router();
 
@@ -46,4 +52,5 @@ router.post('/login',
 );
 
 
-export default router;
+// export default router;
+module.exports = router;

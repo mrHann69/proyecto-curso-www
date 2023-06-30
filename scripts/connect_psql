@@ -20,4 +20,4 @@ else
     exit 1
 fi
 
-docker exec -it proyecto-curso-www-db-1 psql -U postgres -d db_proyecto_www
+docker exec -it proyecto-curso-www-db-1 psql -U postgres -d dbproyectowww

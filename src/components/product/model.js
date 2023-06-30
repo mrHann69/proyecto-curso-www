@@ -1,4 +1,6 @@
-import { DataTypes, Model } from 'sequelize';
+// import { DataTypes, Model } from 'sequelize';
+const { DataTypes, Model } = require( 'sequelize');
+
 
 //nombre de tabla 
 const PRODUCT_TABLE = 'product';
@@ -11,16 +13,15 @@ const ProductSchema = {
   },
   description: {
     type: DataTypes.TEXT,
-    allowNull: false
+    allowNull: true
+  },
+  imagen: {
+    type: DataTypes.TEXT,
+    allowNull: true
   },
   price: {
     type: DataTypes.FLOAT,
     allowNull: false
-  },
-  quantity: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    defaultValue: 0
   },
   onUpdate: 'CASCADE',
   onDelete: 'SET NULL'
@@ -29,7 +30,7 @@ const ProductSchema = {
 //clase del producto
 class Product extends Model {
   static associate(models) {
-    
+
   }
   static config(sequelize) {
     return {
@@ -40,4 +41,4 @@ class Product extends Model {
     }
   }
 }
-export default { PRODUCT_TABLE, ProductSchema, Product }; 
+module.exports= { PRODUCT_TABLE, ProductSchema, Product }; 

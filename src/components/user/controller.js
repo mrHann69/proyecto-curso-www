@@ -1,20 +1,25 @@
-import User from "./model.js"; 
+// import {Users} from "./model.js"; 
+// import sequelize from '../../db/pgdatabase.js';
+const sequelize = require('../../db/pgdatabase.js')
 
+const { models } = sequelize;
 // console.log("🔥🔥",);
 // Create
-async function createUser(userData) {
+async function createUsers(UsersData) {
   try {
-    console.log("🔥",userData);
-    const newUser = await User.create(userData);
-    return newUser;
+    console.log("🔥",UsersData);
+    // const newUsers = await Users.create(UsersData);
+    const newUsers = await models.Users.create(UsersData);
+    return newUsers;
   } catch (error) {
     throw new Error('Error al crear el usuario');
   }
 }
 
-async function getUsers() {
+async function getUserss() {
     try {
-      const users = await User.findAll();
+      // const userss = await Users.findAll();
+      const users = await models.Users.findAll();
       console.log("🔥🔥",users);
       if (!users) {
         throw new Error('Usuarios no encontrado');
@@ -25,47 +30,49 @@ async function getUsers() {
     }
   }
 // Read
-async function getUserById(userId) {
+async function getUsersById(UsersId) {
   try {
-    const user = await User.findByPk(userId);
-    console.log("🔥🔥🔥",{userId, user});
-    if (!user) {
+    // const Users = await Users.findByPk(UsersId);
+    const Users = await models.Users.findByPk(UsersId);
+    console.log("🔥🔥🔥",{UsersId, Users});
+    if (!Users) {
       throw new Error('Usuario no encontrado'); 
     }
-    return user;
+    return Users;
   } catch (error) {
     throw new Error('Error al obtener el usuario');
   }
 }
 
 // Update
-async function updateUser(userId, userData) {
+async function updateUsers(UsersId, UsersData) {
   try {
-    const user = await User.findByPk(userId);
-    if (!user) {
+    const Users = await models.Users.findByPk(UsersId);
+    if (!Users) {
       throw new Error('Usuario no encontrado');
     }
-    console.log("🔥🔥🔥🔥",{userId, userData, user});
-    await user.update(userData);
-    return user;
+    console.log("🔥🔥🔥🔥",{UsersId, UsersData, Users});
+    await Users.update(UsersData);
+    return Users;
   } catch (error) {
     throw new Error('Error al actualizar el usuario');
   }
 }
 
 // Delete
-async function deleteUser(userId) {
+async function deleteUsers(UsersId) {
   try {
-    const user = await User.findByPk(userId);
-    if (!user) {
+    const Users = await models.Users.findByPk(UsersId);
+    if (!Users) {
       throw new Error('Usuario no encontrado');
     }
-    await user.destroy();
+    await Users.destroy();
     return 'Usuario eliminado correctamente';
   } catch (error) {
     throw new Error('Error al eliminar el usuario');
   }
 }
-const userController = { createUser, getUsers, getUserById, updateUser, deleteUser };
+const UsersController = { createUsers, getUserss, getUsersById, updateUsers, deleteUsers };
 
-export default userController;
+// export default UsersController;
+module.exports = UsersController;

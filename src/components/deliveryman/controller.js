@@ -1,11 +1,14 @@
-import Deliveryman from "./model.js"; 
+// import Deliveryman from "./model.js";
+// import { models } from 'sequelize;'
 
-// console.log("🔥🔥",);
+const Deliveryman = require("./model.js");
+const { models } = require('sequelize');
+
+// 
 // Create
 async function createDeliveryman(DeliverymanData) {
   try {
-    console.log("🔥",DeliverymanData);
-    const newDeliveryman = await Deliveryman.create(DeliverymanData);
+    const newDeliveryman = await models.Deliveryman.create(DeliverymanData);
     return newDeliveryman;
   } catch (error) {
     throw new Error('Error creating deliveryman');
@@ -14,8 +17,7 @@ async function createDeliveryman(DeliverymanData) {
 
 async function getDeliverymans() {
     try {
-      const Deliverymans = await Deliveryman.findAll();
-      console.log("🔥🔥",Deliverymans);
+      const Deliverymans = await models.Deliveryman.findAll();
       if (!Deliverymans) {
         throw new Error('Usuarios no encontrado');
       }
@@ -27,8 +29,7 @@ async function getDeliverymans() {
 // Read
 async function getDeliverymanById(DeliverymanId) {
   try {
-    const Deliveryman = await Deliveryman.findByPk(DeliverymanId);
-    console.log("🔥🔥🔥",{DeliverymanId, Deliveryman});
+    const Deliveryman = await models.Deliveryman.findByPk(DeliverymanId);
     if (!Deliveryman) {
       throw new Error('Usuario no encontrado'); 
     }
@@ -41,12 +42,11 @@ async function getDeliverymanById(DeliverymanId) {
 // Update
 async function updateDeliveryman(DeliverymanId, DeliverymanData) {
   try {
-    const Deliveryman = await Deliveryman.findByPk(DeliverymanId);
+    const Deliveryman = await models.Deliveryman.findByPk(DeliverymanId);
     if (!Deliveryman) {
       throw new Error('Usuario no encontrado');
     }
-    console.log("🔥🔥🔥🔥",{DeliverymanId, DeliverymanData, Deliveryman});
-    await Deliveryman.update(DeliverymanData);
+    await models.Deliveryman.update(DeliverymanData);
     return Deliveryman;
   } catch (error) {
     throw new Error('Error updating deliveryman');
@@ -56,11 +56,11 @@ async function updateDeliveryman(DeliverymanId, DeliverymanData) {
 // Delete
 async function deleteDeliveryman(DeliverymanId) {
   try {
-    const Deliveryman = await Deliveryman.findByPk(DeliverymanId);
+    const Deliveryman = await models.Deliveryman.findByPk(DeliverymanId);
     if (!Deliveryman) {
       throw new Error('Usuario no encontrado');
     }
-    await Deliveryman.destroy();
+    await models.Deliveryman.destroy();
     return 'Usuario eliminado correctamente';
   } catch (error) {
     throw new Error('Error deleting deliveryman');
@@ -68,4 +68,5 @@ async function deleteDeliveryman(DeliverymanId) {
 }
 const DeliverymanController = { createDeliveryman, getDeliverymans, getDeliverymanById, updateDeliveryman, deleteDeliveryman };
 
-export default DeliverymanController;
+// export default DeliverymanController;
+module.exports = DeliverymanController;

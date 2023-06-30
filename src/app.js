@@ -1,16 +1,26 @@
-import express from 'express';
-import morgan from 'morgan';
-import routes from "./routes.js";
-import bodyParser from 'body-parser';
-import './db/pgdatabase.js';
-import { testConnection } from './db/pgdatabase.js';
-// import './db/db-connection/db-mongo.js';
+// import express from 'express';
+// import morgan from 'morgan';
+// import routes from "./routes.js";
+// import bodyParser from 'body-parser';
+// import './db/pgdatabase.js';
+// import { testConnection } from './db/pgdatabase.js';
+// import "./middlewares/auth.js";
 
-testConnection();
 
-import cors from 'cors';
+const express = require('express');
+const morgan = require('morgan');
+const routes = require('./routes.js');
+const bodyParser = require('body-parser');
+require('./db/pgdatabase.js');
+// const { testConnection } = require('./db/pgdatabase.js');
+require('./middlewares/auth.js');
 
-import "./middlewares/auth.js";
+
+// testConnection();
+
+// import cors from 'cors';
+const cors = require('cors');
+
 
 const app = express();
 
@@ -38,4 +48,5 @@ app.get('*',(req,res)=>{
 });
 
 
-export default app;
+// export default app;
+module.exports = app;

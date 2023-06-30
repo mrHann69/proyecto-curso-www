@@ -1,8 +1,11 @@
-import { DataTypes } from 'sequelize';
-import sequelize from "../../db/pgdatabase.js";
+// import { DataTypes, Model } from 'sequelize';
+
+const { DataTypes, Model } =require('sequelize');
 
 
-const Service = sequelize.define('Service', {
+const SERVICE_TABLE = 'service';
+
+const ServiceSchema = {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -34,18 +37,25 @@ const Service = sequelize.define('Service', {
     allowNull: false,
     defaultValue: false
   }
-  
-}, {
-  tableName: 'Service',
-  timestamps: true
-});
 
-Service.associate=function(models){
-  Service.belongsTo(models.DeliveryMan,{
-    foreignKey: 'DeliveryManId',
-    as: 'DeliveryMan'
-  })
 }
 
-export default Service;
- 
+class Service extends Model {
+  static associate(models) {
+    this.belongsTo(models.Deliveryman,
+      {
+        foreignKey: 'id',
+        as: 'deliveryman'
+      });
+  }
+  static config(sequelize) {
+    return {
+      sequelize,
+      tableName: SERVICE_TABLE,
+      modelName: 'Service',
+      timestamps: true
+    }
+  }
+}
+
+module.exports = { SERVICE_TABLE, ServiceSchema, Service };

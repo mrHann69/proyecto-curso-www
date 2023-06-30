@@ -1,4 +1,8 @@
-import { DataTypes, Model } from 'sequelize';
+// import { DataTypes, Model } from 'sequelize';
+// import bcrypt from 'bcrypt';
+
+const { DataTypes, Model } = require('sequelize')
+const bcrypt = require('bcrypt')
 
 const USERS_TABLE = 'users';
 
@@ -27,31 +31,27 @@ const UsersSchema = {
   roluser: {
     type: DataTypes.STRING,
     allowNull: false
-  }
+  },
 }
 
-UsersSchema.isValidPassword = function (password, hashedPassword) {
-  return bcrypt.compare(password, hashedPassword).catch(err=>console.error("error while comparing passwords",err));
-}
 
-class Users extends Model{
+class Users extends Model {
   static associate(models) {
-
+    this.belongsToMany(models.BranchOffice, { through: 'UsersBranchOffice' });
   }
-  static confi(sequelize){
+  static config(sequelize) {
     return {
       sequelize,
       tableName: USERS_TABLE,
       modelName: 'Users',
-      timestamps: true 
+      timestamps: true
     }
+  }
+  static async isValidPassword(password, hashedPassword) {
+    return await bcrypt.compare(password, hashedPassword).catch(err => console.error("error while comparing passwords", err));
   }
 }
 
 
-// User.sync({ force: true })
-// User.sync({ alter: true, logging: console.log })
-//   .then(() => console.log("Table Users created"))
-//   .catch((err)=> console.error("Table User not created ", err))
-
-export default { USERS_TABLE, UsersSchema, Users }; 
+// export { USERS_TABLE, UsersSchema, Users }; 
+module.exports = { USERS_TABLE, UsersSchema, Users }; 

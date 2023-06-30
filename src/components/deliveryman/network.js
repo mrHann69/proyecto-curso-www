@@ -1,5 +1,8 @@
-import express from "express";
-import DeliverymanController from './controller.js';
+// import express from "express";
+// import DeliverymanController from './controller.js';
+
+const express = require("express");
+const DeliverymanController = require('./controller.js');
 
 const router = express.Router();
 
@@ -51,4 +54,5 @@ router.delete('/deliveryman', async (req, res) => {
     }
 });
 
-export default router;
+// export default router;
+module.exports= router;

@@ -1,4 +1,5 @@
 version: "3.3"
+
 services:
   db:
     image: postgres:14
@@ -7,9 +8,10 @@ services:
     volumes:
       - ./postgres_data:/var/lib/postgresql/data
     environment:
-      - POSTGRES_DATABASE=db_proyecto_www
+      - POSTGRES_DATABASE=dbproyectowww
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
+
   app:
     restart: on-failure
     build:
@@ -18,7 +20,8 @@ services:
     ports:
       - 4000:4000
     volumes:
-      - .:/app/
+      # - .:/app/
+      - .:/usr/src/
     command: npm run dev && npm install
     depends_on:
       - db
