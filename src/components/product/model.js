@@ -7,6 +7,12 @@ const PRODUCT_TABLE = 'product';
 
 //esquema de producto
 const ProductSchema = {
+  id: {
+    allowNull: false,
+    autoIncrement: true,
+    primaryKey: true,
+    type: DataTypes.INTEGER,
+  },
   name: {
     type: DataTypes.STRING,
     allowNull: false
@@ -22,9 +28,7 @@ const ProductSchema = {
   price: {
     type: DataTypes.FLOAT,
     allowNull: false
-  },
-  onUpdate: 'CASCADE',
-  onDelete: 'SET NULL'
+  }
 }
 
 //clase del producto
@@ -37,7 +41,7 @@ class Product extends Model {
       sequelize,
       tableName: PRODUCT_TABLE,
       modelName: 'Product',
-      timestamps: true
+      timestamps: false
     }
   }
 }

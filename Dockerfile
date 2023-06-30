@@ -8,9 +8,9 @@
 # # CMD ["node","src/index.js"]
 
 FROM node:18
-COPY ["package.json", "package-lock.json", "/usr/src/"]
-WORKDIR /usr/src/
+COPY ["package.json", "package-lock.json", "/app/"]
+WORKDIR /app/
 RUN npm install
-COPY [".","/usr/src/"]
+COPY [".","/app/"]
 EXPOSE 4000
 CMD ["node", "index.js"]

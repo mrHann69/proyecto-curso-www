@@ -8,6 +8,12 @@ const { SERVICE_TABLE } = require ('../service/model.js');
 const DELIVERYMAN_TABLE = 'deliveryman';
 
 const DeliverymanSchema = {
+  id: {
+    allowNull: false,
+    autoIncrement: true,
+    primaryKey: true,
+    type: DataTypes.INTEGER,
+  },
   name: {
     type: DataTypes.STRING,
     allowNull: false

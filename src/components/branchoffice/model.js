@@ -4,6 +4,12 @@ const { DataTypes, Model } = require('sequelize');
 const BRANCH_OFFICE_TABLE = 'branch_office';
 
 const BranchOfficeSchema = {
+  id: {
+    allowNull: false,
+    autoIncrement: true,
+    primaryKey: true,
+    type: DataTypes.INTEGER,
+  },
   branchname: {
     type: DataTypes.STRING,
     allowNull: false

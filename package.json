@@ -43,5 +43,6 @@
     "morgan": "^1.10.0",
     "nodemon": "^2.0.22",
     "sequelize-cli": "^6.6.1"
-  }
+  },
+  "type": "commonjs"
 }

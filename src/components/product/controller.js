@@ -1,74 +1,80 @@
-// import User from "./model.js"; 
-const User = require( "./model.js");
+// import product from "./model.js"; 
+// const product = require( "./model.js");
 
-
+const sequelize = require('../../db/pgdatabase.js')
+const { models } = sequelize;
 
 // Create
-async function createUser(userData) {
+async function createProduct(productData) {
   try {
-    console.log("🔥",userData);
-    const newUser = await User.create(userData);
-    return newUser;
+    console.log("🔥",productData);
+    // const newproduct = await product.create(productData);
+    const newproduct = await models.Product.create(productData);
+    return newproduct;
   } catch (error) {
     throw new Error('Error al crear el usuario');
   }
 }
 
-async function getUsers() {
+async function getProducts() {
     try {
-      const users = await User.findAll();
-      console.log("🔥🔥",users);
-      if (!users) {
-        throw new Error('Usuarios no encontrado');
+      // const products = await product.findAll();
+      const products = await models.Product.findAll();
+      console.log("🔥🔥",products);
+      if (!products) {
+        throw new Error('Productos nos encontrados');
       }
-      return users;
+      return products;
     } catch (error) {
-      throw new Error('Error al obtener el usuario');
+      throw new Error('Error al obtener los productos');
     }
   }
 // Read
-async function getUserById(userId) {
+async function getProductById(productId) {
   try {
-    const user = await User.findByPk(userId);
-    console.log("🔥🔥🔥",{userId, user});
-    if (!user) {
-      throw new Error('Usuario no encontrado'); 
+    // const product = await product.findByPk(productId);
+    const product = await models.Product.findByPk(productId);
+    console.log("🔥🔥🔥",{productId, product});
+    if (!product) {
+      return {}; 
     }
-    return user;
+    return product;
   } catch (error) {
-    throw new Error('Error al obtener el usuario');
+    throw new Error('Error al obtener el producto');
   }
 }
 
 // Update
-async function updateUser(userId, userData) {
+async function updateProduct(productId, productData) {
   try {
-    const user = await User.findByPk(userId);
-    if (!user) {
-      throw new Error('Usuario no encontrado');
+    // const product = await product.findByPk(productId);
+    const product = await models.Product.findByPk(productId);
+    if (!product) {
+      throw new Error('producto no encontrado');
     }
-    console.log("🔥🔥🔥🔥",{userId, userData, user});
-    await user.update(userData);
-    return user;
+    console.log("🔥🔥🔥🔥",{productId, productData, product});
+    await product.update(productData);
+    return product;
   } catch (error) {
-    throw new Error('Error al actualizar el usuario');
+    throw new Error('Error al actualizar el producto');
   }
 }
 
 // Delete
-async function deleteUser(userId) {
+async function deleteProduct(productId) {
   try {
-    const user = await User.findByPk(userId);
-    if (!user) {
-      throw new Error('Usuario no encontrado');
+    // const product = await product.findByPk(productId);
+    const product = await models.Product.findByPk(productId);
+    if (!product) {
+      throw new Error('producto no encontrado');
     }
-    await user.destroy();
-    return 'Usuario eliminado correctamente';
+    await product.destroy();
+    return {msg:'producto eliminado correctamente'}
   } catch (error) {
-    throw new Error('Error al eliminar el usuario');
+    throw new Error('Error al eliminar el producto');
   }
 }
-const userController = { createUser, getUsers, getUserById, updateUser, deleteUser };
+const productController = { createProduct, getProducts, getProductById, updateProduct, deleteProduct };
 
-// export default userController;
-module.exports =userController;
+// export default productController;
+module.exports =productController;

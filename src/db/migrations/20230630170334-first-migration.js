@@ -23,6 +23,12 @@ module.exports = {
 
     await queryInterface.createTable(USERS_TABLE,
       {
+        id: {
+          allowNull: false,
+          autoIncrement: true,
+          primaryKey: true,
+          type: DataTypes.INTEGER,
+        },
         name: {
           type: DataTypes.STRING,
           allowNull: false
@@ -47,20 +53,17 @@ module.exports = {
         roluser: {
           type: DataTypes.STRING,
           allowNull: false
-        },
-        // isValidPassword: async function (password, hashedPassword) {
-        //   return await bcrypt.compare(password, hashedPassword).catch(err => console.error("error while comparing passwords", err));
-        // },
-        createdAt: {
-          type: DataTypes.DATE
-        },
-        updatedAt: {
-          type: DataTypes.DATE
         }
       }
     );
     await queryInterface.createTable(BRANCH_OFFICE_TABLE,
       {
+        id: {
+          allowNull: false,
+          autoIncrement: true,
+          primaryKey: true,
+          type: DataTypes.INTEGER,
+        },
         branchname: {
           type: DataTypes.STRING,
           allowNull: false
@@ -72,17 +75,17 @@ module.exports = {
         telephone: {
           type: DataTypes.STRING,
           allowNull: false
-        },
-        createdAt: {
-          type: DataTypes.DATE
-        },
-        updatedAt: {
-          type: DataTypes.DATE
         }
       });
 
     await queryInterface.createTable(PRODUCT_TABLE,
       {
+        id: {
+          allowNull: false,
+          autoIncrement: true,
+          primaryKey: true,
+          type: DataTypes.INTEGER,
+        },
         name: {
           type: DataTypes.STRING,
           allowNull: false
@@ -105,7 +108,8 @@ module.exports = {
           id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
-            autoIncrement: true
+            autoIncrement: true,
+            allowNull: false,
           },
           origin: {
             type: DataTypes.STRING,
@@ -136,6 +140,12 @@ module.exports = {
         });
     await queryInterface.createTable(DELIVERYMAN_TABLE,
       {
+        id: {
+          allowNull: false,
+          autoIncrement: true,
+          primaryKey: true,
+          type: DataTypes.INTEGER,
+        },
         name: {
           type: DataTypes.STRING,
           allowNull: false
@@ -175,8 +185,8 @@ module.exports = {
     await queryInterface.dropTable(USERS_TABLE);
     await queryInterface.dropTable(BRANCH_OFFICE_TABLE);
     await queryInterface.dropTable(PRODUCT_TABLE);
-    await queryInterface.dropTable(SERVICE_TABLE);
     await queryInterface.dropTable(DELIVERYMAN_TABLE);
+    await queryInterface.dropTable(SERVICE_TABLE);
 
   }
 };

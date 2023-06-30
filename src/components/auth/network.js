@@ -15,7 +15,7 @@ const router = express.Router();
 
 const signingToken = (user) => {
     const { name, email, telephone, address, password, roluser } = user;
-    const token = Jwt.sign({ name, email, telephone, password, roluser },
+    const token = Jwt.sign({ name, email, telephone, address, password, roluser },
         config.TOKEN_SECRET, {
         expiresIn: config.TOKEN_EXPIRES
     });

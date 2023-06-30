@@ -7,6 +7,12 @@ const bcrypt = require('bcrypt')
 const USERS_TABLE = 'users';
 
 const UsersSchema = {
+  id: {
+    allowNull: false,
+    autoIncrement: true,
+    primaryKey: true,
+    type: DataTypes.INTEGER,
+  },
   name: {
     type: DataTypes.STRING,
     allowNull: false
@@ -44,7 +50,7 @@ class Users extends Model {
       sequelize,
       tableName: USERS_TABLE,
       modelName: 'Users',
-      timestamps: true
+      timestamps: false
     }
   }
   static async isValidPassword(password, hashedPassword) {
