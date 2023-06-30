@@ -6,6 +6,7 @@ import DeliveryMan from "../deliveryMan/deliveryMan.jsx"
 import LoginForm from "../login/login.jsx"
 import RegisterForm from "../login/register/comp_registro.jsx"
 import img from "../../public/default.jpg"
+<<<<<<< HEAD
 import Dashboard from '../dashboard/dashboard.jsx';
 import Orders from '../orders/orders.jsx';
 import Reports from '../reports/reports.jsx';
@@ -14,6 +15,11 @@ import Product from '../client/products/product.jsx'
 import Perfile_DM from '../client/perfiles_DM/perfile_DM.jsx'
 import StateProduct from '../client/state_products/stateProduct.jsx'
 
+=======
+import Orders from '../admin/orders/orders.jsx';
+import Reports from '../admin/reports/reports.jsx';
+import Management from '../admin/management/management.jsx';
+>>>>>>> aba9b71e655fe902ec2d89f2e9962a2e6befd896
 
 function Router(token, redirectPath="/login") {
     if(!token){
@@ -25,9 +31,8 @@ function Router(token, redirectPath="/login") {
         <Route path="/login" element={<LoginForm/>}></Route>
         <Route path="" element={<Navigate to={"/login"}/>}></Route>
         <Route path="/register" element={<RegisterForm/>}></Route>
-        
+
         <Route path="/admin" element={<Admin/>}></Route>
-        <Route path="/admin/dashboard" element={<Dashboard />}></Route>
         <Route path="/admin/orders" element={<Orders />}></Route>
         <Route path="/admin/reports" element={<Reports />}></Route>
         <Route path="/admin/management" element={<Management />}></Route>
