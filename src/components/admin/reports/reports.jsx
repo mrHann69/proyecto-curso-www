@@ -1,11 +1,11 @@
 import React from "react"
-import ButtonAppBar from "../navbar/navbar";
+import ButtonAppBar from "../../navbar/navbar";
 
-import AdminDiv from "../aux_admin/AdminDiv.jsx"
-import "../aux_admin/AuxAdmin.css"
+import AdminDiv from "../../aux_admin/AdminDiv.jsx"
+import "../../aux_admin/AuxAdmin.css"
 
 const Reports = () => {
-    return( 
+    return(
         <div>
             <ButtonAppBar/>
             <div id="bdiv">
