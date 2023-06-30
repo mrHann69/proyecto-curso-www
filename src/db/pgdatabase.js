@@ -1,5 +1,6 @@
 import { Sequelize } from 'sequelize';
 import config from "../config/config.js";
+import setupModels from './setupModels.js';
 
 const { POSTGRES_URI, POSTGRES_URI_DOCKER, POSTGRES_USERNAME, POSTGRES_HOST, POSTGRES_DATABASE, POSTGRES_PASSWORD } = config;
 
@@ -14,6 +15,9 @@ const options = {
   }
 } 
 const sequelize = new Sequelize(POSTGRES_URI_DOCKER, options);
+
+setupModels(sequelize);
+
 
 export const testConnection = async () => {
   try {

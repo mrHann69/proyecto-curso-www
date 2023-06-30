@@ -1,9 +1,8 @@
-import { DataTypes } from 'sequelize';
-import sequelize from "../../db/pgdatabase.js";
-import bcrypt from 'bcrypt';
+import { DataTypes, Model } from 'sequelize';
 
+const USERS_TABLE = 'users';
 
-const User = sequelize.define('User', {
+const UsersSchema = {
   name: {
     type: DataTypes.STRING,
     allowNull: false
@@ -29,19 +28,30 @@ const User = sequelize.define('User', {
     type: DataTypes.STRING,
     allowNull: false
   }
-}, {
-  tableName: 'Users',
-  timestamps: true
-});
+}
 
-
-User.isValidPassword = function (password, hashedPassword) {
+UsersSchema.isValidPassword = function (password, hashedPassword) {
   return bcrypt.compare(password, hashedPassword).catch(err=>console.error("error while comparing passwords",err));
 }
 
-// User.sync({ force: true })
-User.sync({ alter: true, logging: console.log })
-  .then(() => console.log("Table Users created"))
-  .catch((err)=> console.error("Table User not created ", err))
+class Users extends Model{
+  static associate(models) {
 
-export default User; 
+  }
+  static confi(sequelize){
+    return {
+      sequelize,
+      tableName: USERS_TABLE,
+      modelName: 'Users',
+      timestamps: true 
+    }
+  }
+}
+
+
+// User.sync({ force: true })
+// User.sync({ alter: true, logging: console.log })
+//   .then(() => console.log("Table Users created"))
+//   .catch((err)=> console.error("Table User not created ", err))
+
+export default { USERS_TABLE, UsersSchema, Users }; 

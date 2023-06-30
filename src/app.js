@@ -2,7 +2,7 @@ import express from 'express';
 import morgan from 'morgan';
 import routes from "./routes.js";
 import bodyParser from 'body-parser';
-// import './db/pgdatabase.js';
+import './db/pgdatabase.js';
 import { testConnection } from './db/pgdatabase.js';
 // import './db/db-connection/db-mongo.js';
 
