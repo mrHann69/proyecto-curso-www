@@ -1,41 +1,28 @@
-import { useRef } from "react";
-import { FaBars, FaTimes } from "react-icons/fa";
-import "./client.css";
+import { AppBar, Button, Stack, IconButton, Toolbar, Typography } from "@mui/material"
+import { Outlet, Link, Navigate } from "react-router-dom";
+
+import AppsIcon from '@mui/icons-material/Apps';
+import Product_Card from "../Cards/Product/product_Card.jsx"
 
 function Client() {
-  const navReferenceClient = useRef();
-
-  const showNavbar = () => {
-    navReferenceClient.current.classList.toggle("responsive_nav");
-  };
 
   return (
-    <div>
-      <header>
-        <h3>Client</h3>
-        <nav ref={navReferenceClient}>
-          <a href="/#">Delivery Mans</a>
-          <a href="/#">My Products</a>
-          <a href="/#">In Way</a>
-          <button className="nav-btn nav-close-btn" onClick={showNavbar}>
-            <FaTimes />
-          </button>
-        </nav>
-        <button className="nav-btn" onClick={showNavbar}>
-          <FaBars />
-        </button>
-      </header>
-      <section>
-
-        <div className="container-info">
-          <h3>Perfil_1</h3>
-          <h2>Id. complete name</h2>
-          <h2>Direccion</h2>
-          <h2>Email</h2>
-          <h2>Telephone FFFFFFFFFFFFFFFFFFFFFFFFFF</h2>
-        </div>
-      </section>
-    </div>
+      <AppBar position='static'>
+        <Toolbar >
+          <IconButton size='large' edge='start' color='inherit' aria-label='logo'>
+            <AppsIcon/>
+          </IconButton>
+          <Typography variant='h7' component='' sx={{flexGrow: 1}} padding={3}>
+          <Button color='inherit' onClick={() => {<Navigate to={"/client"}/>}}>Client # ID</Button>
+          </Typography>
+          <Stack direction='row' spacing={3} edge='end'>
+            <Button color='inherit' onClick={() => {<Link to="/register"/>}}>Delivery Man</Button>
+            <Button color='inherit' onClick={() => {<Navigate to={"/Delivery_Man"}/>}}>Delivery Man</Button>
+            <Button color='inherit' onClick={() => {<Navigate to={"/client/My_Products"}/>}}>My Products</Button>
+            <Button color='inherit' onClick={() => {<Navigate to={"/client/In_Way"}/>}}>In Way</Button>
+          </Stack>
+        </Toolbar>
+      </AppBar>
   );
 }
 
