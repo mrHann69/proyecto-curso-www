@@ -40,3 +40,26 @@ respuesta:
 {
 	"x_access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoibWF0aGVvIiwiZW1haWwiOiJtYXRoNjlAYWxnby5jb20iLCJ0ZWxlcGhvbmUiOiIxMjMyMjI3ODkiLCJwYXNzd29yZCI6IiQyYiQxMCQwUWtNdVNtQTdQbERyYnRKV09kSFhPTURkcUtOQ0xxTElLZmVHVnM4QnRhenk2NGM0TmRLLiIsInJvbHVzZXIiOiJjdXN0b21lciIsImlhdCI6MTY4NzQ5MjEzNiwiZXhwIjoxNjg3NTAyOTM2fQ.m4zX_EV6R60Ir67hhDNztNsGOvK1rTtMpppNfom2O3s"
 }
+
+
+
+para usar el JWT como middleware en las rutas:
+
+e.g: 
+	passport.authenticate('jwt', { session: false }),
+
+1 - proporcionar un token valido en los headers de la peticion
+
+	"x_access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoibWF0aGVveW8iLCJlbWFpbCI6Im1hdGhlb29AYWxnby5jb20iLCJ0ZWxlcGhvbmUiOiIxMjMyMjI3ODkiLCJhZGRyZXNzIjoiY3JhNTZmMDQyNDIzMiIsInBhc3N3b3JkIjoiJDJiJDEwJGxNSkxIZUcvMGpaZTFCOC8xcFEud2VtRnJ1ZUIvV1pncW1DeXNnaGRHNHIzQWt2QWdsN2Q2Iiwicm9sdXNlciI6ImN1c3RvbWVyIiwiaWF0IjoxNjg4MjM0MTg0LCJleHAiOjE2ODgyNDQ5ODR9.hOAgKXx5yYwxEgT1WRmsAYeKABVD5UGT3ylC3s32OR0"
+
+2 - la respuesta de la estrategia JWT devuelve: 
+
+	{
+	id: 5,
+	name: 'matheoyo',
+	password: '$2b$10$lMJLHeG/0jZe1B8/1pQ.wemFrueB/WZgqmCysghdG4r3AkvAgl7d6',
+	address: 'cra56f0424232',
+	email: 'matheoo@algo.com',
+	telephone: '123222789',
+	roluser: 'customer'
+	}

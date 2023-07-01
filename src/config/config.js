@@ -13,9 +13,11 @@ const config = {
     POSTGRES_HOST: process.env.POSTGRES_HOST,
     TOKEN_SECRET: process.env.TOKEN_SECRET,
     TOKEN_EXPIRES: process.env.TOKEN_EXPIRES,
-    BCRYPT_SECRET: process.env.BCRYPT_SECRET
+    BCRYPT_SECRET: process.env.BCRYPT_SECRET,
+    ROLE_CUSTOMER: 'customer',
+    ROLE_ADMIN: 'admin',
+    ROLE_DELIVERYMAN: 'deliveryman',
 }
-
 
 // export default config;
 module.exports = config;
