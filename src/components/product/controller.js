@@ -47,11 +47,11 @@ async function updateProduct(productId, productData) {
   try {
     // const product = await product.findByPk(productId);
     const product = await models.Product.findByPk(productId);
-    if (!product) {
-      return {status:false,msg: 'producto no encontrado'};
+    if (product===null) {
+      return {status:false, msg: 'producto no encontrado'};
     }
-    await product.update(productData);
-    return {status:true, msg:'producto actualizado', product}
+    const response = await product.update(productData,{where:{id:productId}});
+    return {status:true, msg:'producto actualizado', response}
   } catch (error) {
     throw new Error('Error al actualizar el producto');
   }

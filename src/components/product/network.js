@@ -59,7 +59,7 @@ router.put('/product',
 
             const productUpdated = await productController.updateProduct(req.query.id, req.body);
             if (productUpdated.status) return res.status(200).json(productUpdated);
-            return res.status(404).json(productUpdated);
+            return res.status(404).json({msg: 'producto no actualizado'});
         } catch (error) {
             res.status(500).json({ error: error.message });
         }

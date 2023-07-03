@@ -21,9 +21,7 @@ const BranchOfficeSchema = {
   telephone: {
     type: DataTypes.STRING,
     allowNull: false
-  },
-  onUpdate: 'CASCADE',
-  onDelete: 'SET NULL'
+  }
 }
 
 class BranchOffice extends Model{
@@ -35,7 +33,7 @@ class BranchOffice extends Model{
       sequelize,
       tableName: BRANCH_OFFICE_TABLE,
       modelName: 'BranchOffice',
-      timestamps: true 
+      timestamps: false 
     }
   }
 }
