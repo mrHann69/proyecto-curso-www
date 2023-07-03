@@ -26,9 +26,9 @@ const LoginForm = () => {
       return;
     }
     const {token, roluser} = respuestaLogin;
-    localStorage.removeItem('x_access_token');
-    localStorage.setItem('x_access_token', token);
-    if(['admin','customer','deliveryman'].includes(roluser)){
+    if(['admin','customer','deliveryman'].includes(roluser) && token!==undefined){
+      localStorage.removeItem('x_access_token');
+      localStorage.setItem('x_access_token', token);
       navigate(`/${roluser}`);
     }
   };
