@@ -1,8 +1,7 @@
 import { AppBar, Button, Stack, IconButton, Toolbar, Typography } from "@mui/material"
-import { Outlet, Link, Navigate } from "react-router-dom";
+import {  Link, Navigate } from "react-router-dom";
 
 import AppsIcon from '@mui/icons-material/Apps';
-import Product_Card from "../Cards/Product/product_Card.jsx"
 
 function Client() {
 
