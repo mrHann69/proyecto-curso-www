@@ -12,15 +12,10 @@ const morgan = require('morgan');
 const routes = require('./routes.js');
 const bodyParser = require('body-parser');
 require('./db/pgdatabase.js');
-// const { testConnection } = require('./db/pgdatabase.js');
 require('./middlewares/auth.js');
 
 
-// testConnection();
-
-// import cors from 'cors';
 const cors = require('cors');
-
 
 const app = express();
 

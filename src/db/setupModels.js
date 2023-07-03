@@ -9,6 +9,7 @@ const { UsersSchema, Users } = require('../components/user/model.js');
 const { BranchOfficeSchema, BranchOffice } = require('../components/branchoffice/model.js');
 const { Deliveryman, DeliverymanSchema } = require('../components/deliveryman/model.js');
 const { Service, ServiceSchema } = require('../components/service/model.js');
+const {ServiceShipping,ServiceShippingSchema}= require('../components/serviceShipping/model.js');
 
 function setupModels(sequelize) {
     // init models
@@ -17,6 +18,7 @@ function setupModels(sequelize) {
     BranchOffice.init(BranchOfficeSchema, BranchOffice.config(sequelize));
     Deliveryman.init(DeliverymanSchema, Deliveryman.config(sequelize));
     Service.init(ServiceSchema, Service.config(sequelize));
+    ServiceShipping.init(ServiceShippingSchema,ServiceShipping.config(sequelize));
 
 
     Users.associate(sequelize.models);
@@ -24,6 +26,7 @@ function setupModels(sequelize) {
     BranchOffice.associate(sequelize.models);
     Deliveryman.associate(sequelize.models);
     Service.associate(sequelize.models);
+    ServiceShipping.associate(sequelize.models)
 }
 
 // export default setupModels;

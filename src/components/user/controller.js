@@ -14,6 +14,7 @@ async function createUsers(UsersData) {
   }
 }
 
+
 async function getUserss() {
     try {
       // const userss = await Users.findAll();
