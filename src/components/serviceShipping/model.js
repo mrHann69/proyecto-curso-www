@@ -1,18 +1,12 @@
-// import { DataTypes } from 'sequelize';
-// import sequelize from "../../db/pgdatabase.js";
+const { DataTypes, Model } = require('sequelize');
 
-const { DataTypes } = require('sequelize');
-const sequelize = require( "../../db/pgdatabase.js");
+const SERVICE_SHIPPING_TABLE = 'service_shipping';
 
-const ServiceShipping= sequelize.define('ServiceShipping', {
+const ServiceShippingSchema={
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true
-  },
-  origin: {
-    type: DataTypes.STRING,
-    allowNull: false
   },
   dateChange: {
     type: DataTypes.DATE,
@@ -26,14 +20,28 @@ const ServiceShipping= sequelize.define('ServiceShipping', {
   image: {
     type: DataTypes.TEXT('long'), // Use the 'long' option to support longer texts
     allowNull: false
-  },
-}, {
-  tableName: 'Service',
-  timestamps: true
-});
+  }
+}
 
+class ServiceShipping extends Model{
+    static associate(models){
+        this.belongsTo(models.Service,
+            {
+                foreignKey:'id',
+                as:'service',
+            });
+    }
 
+    static config (sequelize){
+        return{
+            sequelize,
+            tableName: SERVICE_SHIPPING_TABLE,
+            modelName: 'Service_shipping',
+            timestamps:true
+        }
+    }
+}
 // export default ServiceShipping;
-module.exports = ServiceShipping;
+module.exports ={SERVICE_SHIPPING_TABLE,ServiceShippingSchema, ServiceShipping};
 
  
