@@ -3,7 +3,7 @@ import {Navigate} from 'react-router-dom';
 
 import AppsIcon from '@mui/icons-material/Apps';
 
-function Perfile_DM() {
+function PerfileDM() {
 
   return (
       <AppBar position='static'>
@@ -23,4 +23,4 @@ function Perfile_DM() {
   );
 }
 
-export default Perfile_DM;
+export default PerfileDM;

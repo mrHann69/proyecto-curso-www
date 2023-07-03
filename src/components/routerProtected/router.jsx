@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate, Outlet } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 
 import Client from "../client/client.jsx"
 import Admin from "../admin/admin.jsx"
@@ -8,7 +8,7 @@ import RegisterForm from "../login/register/comp_registro.jsx"
 import img from "../../public/default.jpg"
 
 import Product from '../client/products/product.jsx'
-import Perfile_DM from '../client/perfiles_DM/perfile_DM.jsx'
+import PerfileDM from '../client/perfiles_DM/perfile_DM.jsx'
 import StateProduct from '../client/state_products/stateProduct.jsx'
 
 import Orders from '../admin/orders/orders.jsx';
@@ -33,11 +33,11 @@ function Router(token, redirectPath="/login") {
         <Route path="/admin/management" element={<Management />}></Route>
 
         <Route path="/client" element={<Client/>}></Route>
-        <Route path="/Delivery_Man" element={<Product/>}></Route>
-        <Route path="/client/My_Products" element={<Perfile_DM/>}></Route>
-        <Route path="/client/In_Way" element={<StateProduct/>}></Route>
+        <Route path="/delivery_man" element={<Product/>}></Route>
+        <Route path="/client/products" element={<PerfileDM/>}></Route>
+        <Route path="/client/in_way" element={<StateProduct/>}></Route>
 
-        <Route path="/deliveryMan" element={<DeliveryMan/>}></Route>
+        <Route path="/deliveryman" element={<DeliveryMan/>}></Route>
       </Routes>
   );
 }

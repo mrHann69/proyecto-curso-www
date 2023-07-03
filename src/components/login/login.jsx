@@ -1,12 +1,14 @@
 import React, { useState } from "react";
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, Link, useNavigate } from "react-router-dom";
 import "./login.css";
+
+import LoginService from "../../services/login.service";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorLoginMessage, setErrorLoginMessage] = useState(null);
-
+  const navigate = useNavigate();
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
   };
@@ -15,9 +17,20 @@ const LoginForm = () => {
     setPassword(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(`Email: ${email} Password: ${password}`);
+    const respuestaLogin = await LoginService({email,password});
+    if(respuestaLogin===null || respuestaLogin===undefined) return{msg: "pailas!"};
+    if(Object.keys(respuestaLogin).length===0) {
+      setErrorLoginMessage("pailas con el login");
+      return;
+    }
+    const {token, roluser} = respuestaLogin;
+    localStorage.removeItem('x_access_token');
+    localStorage.setItem('x_access_token', token);
+    if(['admin','customer','deliveryman'].includes(roluser)){
+      navigate(`/${roluser}`);
+    }
   };
 
   return (
