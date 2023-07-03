@@ -56,7 +56,9 @@ router.post('/login',
       const { status, msg } = req?.authInfo;
       if (!status) return res.status(401).json({ msg });
       const token = signingToken(req.user);
-      return res.status(200).json({ msg, x_access_token: token });
+      const {roluser} = req.user;
+      console.log("tokentoken🚀🚀🚀🚀", token);
+      return res.status(200).json({ msg, token, roluser });
     } catch (error) {
       console.error(error);
     }

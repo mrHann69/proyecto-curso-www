@@ -2,7 +2,6 @@
 const express = require("express");
 const BranchOfficeController = require('./controller.js');
 const passport = require('passport');
-const verifyRol = require('../../middlewares/verifyRol.js');
 const config = require("../../config/config.js");
 const router = express.Router();
 // Endpoint para obtener todas las branchoffices
