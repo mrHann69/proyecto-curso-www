@@ -22,8 +22,9 @@ function Product() {
           </Stack>
         </Toolbar>
     </AppBar>
-    <Product_Card number='1'/>
-    <Product_Card number="1"/>
+    <Product_Card id = "0001" name = "nombre" 
+    description = "Hola como estás soy un producto"
+    price = "100"/>
     </div>
     
   );
