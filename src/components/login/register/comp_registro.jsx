@@ -50,10 +50,11 @@ const RegisterForm = () => {
       role,
     };
     const respuestaRegister = await RegisterService(dataUser);
-    const {token, roluser} = respuestaRegister;
+    let {token, roluser} = respuestaRegister;
     if(['admin','customer','deliveryman'].includes(roluser) && token!==undefined){
       localStorage.removeItem('x_access_token');
       localStorage.setItem('x_access_token', token);
+      if(roluser==='customer') roluser='client';
       navigate(`/${roluser}`);
     }
   };

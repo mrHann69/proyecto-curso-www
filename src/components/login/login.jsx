@@ -25,10 +25,11 @@ const LoginForm = () => {
       setErrorLoginMessage("pailas con el login");
       return;
     }
-    const {token, roluser} = respuestaLogin;
+    let {token, roluser} = respuestaLogin;
     if(['admin','customer','deliveryman'].includes(roluser) && token!==undefined){
       localStorage.removeItem('x_access_token');
       localStorage.setItem('x_access_token', token);
+      if(roluser==='customer') roluser='client';
       navigate(`/${roluser}`);
     }
   };
