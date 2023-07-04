@@ -15,9 +15,9 @@ function Client() {
           <Button color='inherit' href="/client">Client # ID</Button>
           </Typography>
           <Stack direction='row' spacing={3} edge='end'>
-            <Button color='inherit' href="/client/Delivery_Man">Delivery Man</Button>
-            <Button color='inherit' href="/client/My_Products">My Products</Button>
-            <Button color='inherit' href="/client/In_Way">In Way</Button>
+            <Button color='inherit' href="/client/deliveryman">Delivery Man</Button>
+            <Button color='inherit' href="/client/myproducts">My Products</Button>
+            <Button color='inherit' href="/client/inway">In Way</Button>
           </Stack>
         </Toolbar>
       </AppBar>

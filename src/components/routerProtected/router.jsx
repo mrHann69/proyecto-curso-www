@@ -33,11 +33,15 @@ function Router(token, redirectPath="/login") {
         <Route path="/admin/management" element={<Management />}></Route>
 
         <Route path="/client" element={<Client/>}></Route>
-        <Route path="/client/delivery_man" element={<PerfileDM/>}></Route>
-        <Route path="/client/My_Products" element={<Product/>}></Route>
-        <Route path="/client/In_Way" element={<StateProduct/>}></Route>
+        <Route path="/client/deliveryman" element={<PerfileDM/>}></Route>
+        <Route path="/client/myproducts" element={<Product/>}></Route>
+        <Route path="/client/inway" element={<StateProduct/>}></Route>
 
         <Route path="/deliveryman" element={<DeliveryMan/>}></Route>
+        {/* <Route path="/deliveryman" element={<Client/>}></Route>
+        <Route path="/deliveryman/deliveryman" element={<PerfileDM/>}></Route>
+        <Route path="/deliveryman/myproducts" element={<Product/>}></Route>
+        <Route path="/deliveryman/inway" element={<StateProduct/>}></Route> */}
       </Routes>
   );
 }
