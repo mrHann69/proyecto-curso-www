@@ -8,6 +8,7 @@ const RegisterForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [telephone, setTelephone] = useState("");
+  const [city, setCity] = useState("");
   const [address, setAddress] = useState("");
   const [role, setRole] = useState("");
 
@@ -29,7 +30,9 @@ const RegisterForm = () => {
   const handleTelephone = (event) => {
     setTelephone(event.target.value);
   };
-
+  const handleCityChange = (event) => {
+    setCity(event.target.value);
+  };
   const handleAddressChange = (event) => {
     setAddress(event.target.value);
   };
@@ -46,6 +49,7 @@ const RegisterForm = () => {
       email,
       password,
       telephone,
+      city,
       address,
       role,
     };
@@ -101,6 +105,16 @@ const RegisterForm = () => {
               placeholder="Telephone"
               value={telephone}
               onChange={handleTelephone}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="city">City</label>
+            <input
+              type="text"
+              placeholder="City"
+              value={city}
+              onChange={handleCityChange}
               required
             />
           </div>
