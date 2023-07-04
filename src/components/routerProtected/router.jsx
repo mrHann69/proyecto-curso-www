@@ -33,9 +33,9 @@ function Router(token, redirectPath="/login") {
         <Route path="/admin/management" element={<Management />}></Route>
 
         <Route path="/client" element={<Client/>}></Route>
-        <Route path="/client/deliveryman" element={<PerfileDM/>}></Route>
-        <Route path="/client/myproducts" element={<Product/>}></Route>
-        <Route path="/client/inway" element={<StateProduct/>}></Route>
+        <Route path="/client/delivery_man" element={<PerfileDM/>}></Route>
+        <Route path="/client/my_products" element={<Product/>}></Route>
+        <Route path="/client/in_way" element={<StateProduct/>}></Route>
 
         <Route path="/deliveryman" element={<DeliveryMan/>}></Route>
         {/* <Route path="/deliveryman" element={<Client/>}></Route>
