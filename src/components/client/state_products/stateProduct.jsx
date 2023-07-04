@@ -15,8 +15,8 @@ function StateProduct() {
       <Button color='inherit' href="/client">Client # ID</Button>
       </Typography>
       <Stack direction='row' spacing={3} edge='end'>
-        <Button color='inherit' href="/client/deliveryman">Delivery Man</Button>
-        <Button color='inherit' href="/client/myproducts">My Products</Button>
+        <Button color='inherit' href="/client/delivery_man">Delivery Man</Button>
+        <Button color='inherit' href="/client/my_products">My Products</Button>
       </Stack>
     </Toolbar>
   </AppBar>

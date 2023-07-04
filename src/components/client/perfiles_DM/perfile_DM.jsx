@@ -15,8 +15,8 @@ function PerfileDM() {
           <Button color='inherit' href="/client">Client # ID</Button>
           </Typography>
           <Stack direction='row' spacing={3} edge='end'>
-            <Button color='inherit' href="/client/myproducts">My Products</Button>
-            <Button color='inherit' href="/client/inway">In Way</Button>
+            <Button color='inherit' href="/client/my_products">My Products</Button>
+            <Button color='inherit' href="/client/in_way">In Way</Button>
           </Stack>
         </Toolbar>
       </AppBar>
