@@ -7,16 +7,16 @@ function PerfileDM() {
 
   return (
       <AppBar position='static'>
-        <Toolbar >
+        <Toolbar>
           <IconButton size='large' edge='start' color='inherit' aria-label='logo'>
-            <AppsIcon/>
+            <AppsIcon href="/client"/>
           </IconButton>
           <Typography variant='h7' component='' sx={{flexGrow: 1}} padding={3}>
-          <Button color='inherit' onClick={<Navigate to={"/client"}/>}>Client # ID</Button>
+          <Button color='inherit' href="/client">Client # ID</Button>
           </Typography>
           <Stack direction='row' spacing={3} edge='end'>
-            <Button color='inherit' onClick={<Navigate to={"/client/My_Products"}/>}>My Products</Button>
-            <Button color='inherit' onClick={<Navigate to={"/client/In_Way"}/>}>In Way</Button>
+            <Button color='inherit' href="/client/My_Products">My Products</Button>
+            <Button color='inherit' href="/client/In_Way">In Way</Button>
           </Stack>
         </Toolbar>
       </AppBar>
