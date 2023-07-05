@@ -7,39 +7,57 @@ import {
   Toolbar,
   Typography,
 } from "@mui/material";
-import {  Link, Navigate, useHref, href  } from "react-router-dom";
 
 import AppsIcon from "@mui/icons-material/Apps";
-import GetInfoCustomer from "../../services/clientinfo.service.js";
+import { Outlet, Link } from "react-router-dom";
 
 function Client() {
-  const token = localStorage.getItem("x_access_token");
-  const getDataUser =(eltoken)=>{
-    return GetInfoCustomer(eltoken)
-  }
-  useEffect(() => {
-    console.log("data del login xd", getDataUser(token));
-  }, [token]);
 
   return (
     <div>
-      <AppBar position='static'>
+      <AppBar position="static">
         <Toolbar>
-          <IconButton size='large' edge='start' color='inherit' aria-label='logo'>
-            <AppsIcon href="/client"/>
+          <IconButton
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="logo"
+          >
+            <Link to="/client">
+              <AppsIcon />
+            </Link>
           </IconButton>
-          <Typography variant='h7' component='' sx={{flexGrow: 1}} padding={3}>
-          <Button color='inherit' href="/client">Client # ID</Button>
+          <Typography
+            variant="h7"
+            component=""
+            sx={{ flexGrow: 1 }}
+            padding={3}
+          >
+            <Button
+              color="inherit"
+              href="/client/profile"
+            >
+              Profile
+            </Button>
           </Typography>
-          <Stack direction='row' spacing={3} edge='end'>
-            <Button color='inherit' href="/client/delivery_man">Delivery Man</Button>
-            <Button color='inherit' href="/client/my_products">My Products</Button>
-            <Button color='inherit' href="/client/in_way">In Way</Button>
+          <Stack direction="row" spacing={3} edge="end">
+            <Button
+              color="inherit"
+              href="/client/deliveryman"
+            >
+              Delivery Man
+            </Button>
+            <Button
+              color="inherit"
+              href="/client/shippings"
+            >
+              Shippings
+            </Button>
           </Stack>
         </Toolbar>
       </AppBar>
       <div>
-        <div>respuesta server:</div>
+        <Outlet />
       </div>
     </div>
   );
