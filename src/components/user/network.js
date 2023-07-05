@@ -45,6 +45,17 @@ router.get('/user',
         }
     });
 
+router.get('/usertoken',
+    passport.authenticate('jwt', { session: false }),
+    (req, res) => {
+        try {
+            const {status, msg} = req.authInfo;
+            if(!status) return res.status(401).json({msg});
+            return res.status(200).json(req.user);
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    });
 // Endpoint para actualizar un usuario por su ID
 router.put('/user',
     passport.authenticate('jwt', { session: false }),

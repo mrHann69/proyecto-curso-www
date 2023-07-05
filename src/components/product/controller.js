@@ -73,5 +73,4 @@ async function deleteProduct(productId) {
 }
 const productController = { createProduct, getProducts, getProductById, updateProduct, deleteProduct };
 
-// export default productController;
 module.exports =productController;

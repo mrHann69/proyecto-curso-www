@@ -27,7 +27,7 @@ passport.use('signup', new LocalStrategy(
             // const userAlready = await models.Users.findOne({ where: { email: sanitizedEmail } });
             if (userAlready !== null) return done(null, false, { status: false, msg: 'email ready registered' });
             // take data from request
-            const { name, telephone, address, roluser } = req.body;
+            const { name, telephone, city, address, roluser } = req.body;
             const hashedPassword = await bcrypt.hash(reqPassword, 10);
             // save new user on database
             const user = await models.Users.create(
@@ -35,6 +35,7 @@ passport.use('signup', new LocalStrategy(
                     name,
                     email: sanitizedEmail,
                     telephone,
+                    city,
                     address,
                     roluser,
                     password: hashedPassword

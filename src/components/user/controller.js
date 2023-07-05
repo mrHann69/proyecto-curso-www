@@ -7,6 +7,15 @@ const { models } = sequelize;
 async function createUsers(UsersData) {
   try {
     // const newUsers = await Users.create(UsersData);
+    const {
+      name,
+      email,
+      telephone,
+      city,
+      address,
+      roluser,
+      password
+  } = UsersData
     const newUsers = await models.Users.create(UsersData);
     return newUsers;
   } catch (error) {

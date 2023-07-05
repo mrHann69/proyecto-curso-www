@@ -8,6 +8,7 @@ body necesario:
 {
 	"name": "matheo",
 	"password": "1234523",
+	"city": "cali",
 	"address": "cra56f0424232",
 	"email": "math69@algo.com",
 	"telephone": "123222789",
@@ -20,6 +21,7 @@ respuesta:
 	"user": {
 		"name": "matheo",
 		"email": "math69@algo.com",
+		"city": "cali",
 		"telephone": "123222789",
 		"address": "cra56f0424232",
 		"roluser": "customer"
@@ -58,6 +60,7 @@ e.g:
 	id: 5,
 	name: 'matheoyo',
 	password: '$2b$10$lMJLHeG/0jZe1B8/1pQ.wemFrueB/WZgqmCysghdG4r3AkvAgl7d6',
+	city: 'cali',
 	address: 'cra56f0424232',
 	email: 'matheoo@algo.com',
 	telephone: '123222789',

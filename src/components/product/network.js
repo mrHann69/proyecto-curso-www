@@ -1,5 +1,3 @@
-// import express from "express";
-// import userController from './controller.js';
 
 const express = require('express');
 const productController = require('./controller.js')
@@ -81,5 +79,4 @@ router.delete('/product',
         }
     });
 
-// export default router;
 module.exports = router;
