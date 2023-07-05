@@ -1,12 +1,14 @@
 import { AppBar, Button, Stack, IconButton, Toolbar, Typography } from "@mui/material"
 import {Navigate} from 'react-router-dom';
-
 import AppsIcon from '@mui/icons-material/Apps';
+
+import Perfile_Card from '../../Cards/perfile/perfile_Card.jsx';
 
 function PerfileDM() {
 
   return (
-      <AppBar position='static'>
+      <div>
+        <AppBar position='static'>
         <Toolbar>
           <IconButton size='large' edge='start' color='inherit' aria-label='logo'>
             <AppsIcon href="/client"/>
@@ -20,6 +22,8 @@ function PerfileDM() {
           </Stack>
         </Toolbar>
       </AppBar>
+      <Perfile_Card boolRequest={false}/>
+      </div>
   );
 }
 

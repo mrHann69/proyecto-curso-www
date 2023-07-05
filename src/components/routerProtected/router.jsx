@@ -1,15 +1,15 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 
-import Client from "../client/client.jsx"
-import Admin from "../admin/admin.jsx"
-import DeliveryMan from "../deliveryMan/deliveryMan.jsx"
-import LoginForm from "../login/login.jsx"
-import RegisterForm from "../login/register/comp_registro.jsx"
-import img from "../../public/default.jpg"
+import Client from "../client/client.jsx";
+import Admin from "../admin/admin.jsx";
+import DeliveryMan from "../deliveryMan/deliveryMan.jsx";
+import LoginForm from "../login/login.jsx";
+import RegisterForm from "../login/register/comp_registro.jsx";
+import ErrorRute from "./error_rute.jsx";
 
-import Product from '../client/products/product.jsx'
-import PerfileDM from '../client/perfiles_DM/perfile_DM.jsx'
-import StateProduct from '../client/state_products/stateProduct.jsx'
+import Product from '../client/products/product.jsx';
+import PerfileDM from '../client/perfiles_DM/perfile_DM.jsx';
+import StateProduct from '../client/state_products/stateProduct.jsx';
 
 import Orders from '../admin/orders/orders.jsx';
 import Reports from '../admin/reports/reports.jsx';
@@ -22,7 +22,7 @@ function Router(token, redirectPath="/login") {
     }
   return (
       <Routes>
-        <Route path="/*" element={<img src={img} alt='' />}></Route>
+        <Route path="/*" element={<ErrorRute/>}></Route>
         <Route path="/login" element={<LoginForm/>}></Route>
         <Route path="" element={<Navigate to={"/login"}/>}></Route>
         <Route path="/register" element={<RegisterForm/>}></Route>

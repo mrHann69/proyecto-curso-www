@@ -4,7 +4,7 @@ import Box from "@mui/material/Box";
 //import ButtonBase from "@mui/material/ButtonBase";
 import Typography from "@mui/material/Typography";
 
-function Product_Card( id, name, description, price ) {
+function Product_Card({ id, name, description, price }) {
   //const ImageButton = styled(ButtonBase)(({ theme }) => ({
   const ImageButton = styled(Box)(({ theme }) => ({
     position: "relative",
