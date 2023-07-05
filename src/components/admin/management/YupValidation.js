@@ -1,6 +1,6 @@
 import * as yup from "yup";
 
-const phoneNumberRegEx = /^[0-1]{2}[0-9]{9}/;
+const phoneNumberRegEx = /^3[0-9]{9}/;
 const PasswordRegEx = /^.*((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/;
 
 const YupValidation = yup.object().shape({

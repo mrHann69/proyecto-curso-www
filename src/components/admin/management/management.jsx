@@ -1,18 +1,18 @@
 import React from "react"
 import ButtonAppBar from "../../navbar/navbar";
-import AdminDiv from "../../aux_admin/AdminDiv.jsx"
+import AdminDiv from "../aux_admin/AdminDiv.jsx"
 
 import TabsOptions from "./tabs.jsx";
 
-import "../../aux_admin/AuxAdmin.css"
+import "../aux_admin/AuxAdmin.css"
 
 
 const Management = () => {
     return(
-        <div>
+        <div >
             <ButtonAppBar/>
-            <div id="bdiv">
-                <AdminDiv component={ <TabsOptions></TabsOptions>}/>
+            <div className="myDiv">
+                <AdminDiv component={<TabsOptions></TabsOptions>}/>
             </div>
         </div>);
 }

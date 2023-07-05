@@ -7,32 +7,32 @@ import {
   TextField,
   Typography
 } from "@mui/material";
-import axios from "axios";
 import { Formik, Field, Form, ErrorMessage } from "formik";
+import YupValidation from "../YupValidation.js";
 import { useState } from "react";
-import YupValidation from "./YupValidation.js";
 
-const AddDelivery = (props) => {
+export default function  Modify(props){
+
+  const [name,setName]=useState(props.name);
+  const [email,setEmail]=useState(props.email);
+  const [phoneNumber,setPhoneNumber]=useState(props.phoneNumber);
+  const [password,setPassword]=useState(props.password);
 
   const initialValue = {
-      name: "",
-      email: "",
-      phoneNumber: "",
-      address:"",
-      city:"",
-      password: "",
-      confirmPassword: "",
+      name: props.name,
+      email: props.email,
+      phoneNumber: props.phoneNumber,
+      password: props.password,
+   };
 
-    };
-
-  const handleSubmit =async (values, props) => {
-
-    const token=localStorage.getItem('x_access_token');
-    await axios.post(process.env.REACT_APP_BACKEND_URI+'/user',{telephone:values.phoneNumber,roluser:'deliveryman',...values},{headers:{x_access_token:token}})
-    alert("se ha agregado con exito");
+  const handleSubmit = (values, props) => {
+    console.log(values);
+    alert(JSON.stringify(values));
+    //TODO update or create 
 
     props.resetForm();
   };
+
 
   return (
     <Grid container>
@@ -40,7 +40,7 @@ const AddDelivery = (props) => {
       <Grid item sm={6} xs={12}>
         <Paper>
           <Box m={5} p={3}>
-            <Typography variant="h5">Add a delivery</Typography>
+            <Typography variant="h5">Modify user</Typography>
             <Formik
               initialValues={initialValue}
               validationSchema={YupValidation}
@@ -89,31 +89,6 @@ const AddDelivery = (props) => {
                         props.errors.phoneNumber && props.touched.phoneNumber
                       }
                     />
-                    <TextField
-                      label="Address"
-                      name="address"
-                      fullWidth
-                      variant="outlined"
-                      margin="dense"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      helperText={<ErrorMessage name="address" />}
-                      error={props.errors.name && props.touched.name}
-                      required
-                    />
-                    <TextField
-                      label="City"
-                      name="city"
-                      fullWidth
-                      variant="outlined"
-                      margin="dense"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      helperText={<ErrorMessage name="city" />}
-                      error={props.errors.name && props.touched.name}
-                      required
-                    />
-
                     <Field
                       as={TextField}
                       label="Password"
@@ -125,21 +100,6 @@ const AddDelivery = (props) => {
                       helperText={<ErrorMessage name="password" />}
                       error={props.errors.password && props.touched.password}
                     />
-                    <Field
-                      as={TextField}
-                      label="Confirm Password"
-                      name="confirmPassword"
-                      type="password"
-                      fullWidth
-                      variant="outlined"
-                      margin="dense"
-                      helperText={<ErrorMessage name="confirmPassword" />}
-                      error={
-                        props.errors.confirmPassword &&
-                        props.touched.confirmPassword
-                      }
-                    />
-
                     <Button
                       variant="contained"
                       type="submit"
@@ -160,4 +120,3 @@ const AddDelivery = (props) => {
   );
 };
 
-export default AddDelivery;

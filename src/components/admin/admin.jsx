@@ -1,7 +1,7 @@
 import ButtonAppBar from "../navbar/navbar";
 //import TemporaryDrawer from "../sidebar/sidebar";
-import AdminDiv from "../aux_admin/AdminDiv.jsx"
-import "../aux_admin/AuxAdmin.css"
+import AdminDiv from "./aux_admin/AdminDiv.jsx"
+import "./aux_admin/AuxAdmin.css"
 
 function Admin() {
     return( 
