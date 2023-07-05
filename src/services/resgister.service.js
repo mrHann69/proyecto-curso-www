@@ -1,11 +1,15 @@
 import axios from "axios";
 import config from '../config.js';
 
-const RegisterService = async (userData) => {
+async function RegisterService(userData) {
   try {
     if (Object.keys(userData).length === 0) return {};
     const URI = (config.BACKEND_URI).concat('/register');
-    return await axios.post(URI, userData)
+    return await axios.post(URI, userData, {
+      headers:{
+        "Content-Type":"application/json"
+      }
+    })
       .then(response => response?.data)
       .catch(err => console.error("error en axios Register", err));
   } catch (error) {
