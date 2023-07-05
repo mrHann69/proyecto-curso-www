@@ -51,27 +51,28 @@ async function getUsersById(UsersId) {
 }
 
 // Update
-async function updateUsers(UsersId, UsersData) {
+async function updateUsers(UserId, UserData) {
   try {
-    const Users = await models.Users.findByPk(UsersId);
-    if (!Users) {
+    const User = await models.Users.findByPk(UserId);
+    if (!User) {
+      console.log("usuario no encontrado!!!");
       throw new Error('Usuario no encontrado');
     }
-    await Users.update(UsersData);
-    return Users;
+    const resultUpdate = await models.Users.update(UserData, {where:{id: UserId}});
+    return resultUpdate;
   } catch (error) {
     throw new Error('Error al actualizar el usuario');
   }
 }
 
 // Delete
-async function deleteUsers(UsersId) {
+async function deleteUsers(UserId) {
   try {
-    const Users = await models.Users.findByPk(UsersId);
+    const Users = await models.Users.findByPk(UserId);
     if (!Users) {
       throw new Error('Usuario no encontrado');
     }
-    await Users.destroy();
+    await models.Users.destroy({where:{id: UserId}});
     return 'Usuario eliminado correctamente';
   } catch (error) {
     throw new Error('Error al eliminar el usuario');

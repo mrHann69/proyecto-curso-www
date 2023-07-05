@@ -61,8 +61,10 @@ router.put('/user',
     passport.authenticate('jwt', { session: false }),
     async (req, res) => {
         try {
-            const user = await userController.updateUsers(req.query.id, req.body);
-            res.json(user);
+            const {status, msg} = req.authInfo;
+            if(!status) return res.status(401).json({msg});
+            const userUpdated = await userController.updateUsers(req.query.id, req.body);
+            return res.status(200).json(userUpdated);
         } catch (error) {
             res.status(500).json({ error: error.message });
         }
