@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {useNavigate } from "react-router-dom";
+import {useNavigate, redirect } from "react-router-dom";
 import "./comp_registro.css";
 import RegisterService from "../../../services/resgister.service.js";
 
@@ -10,7 +10,7 @@ const RegisterForm = () => {
   const [telephone, setTelephone] = useState("");
   const [city, setCity] = useState("");
   const [address, setAddress] = useState("");
-  const [role, setRole] = useState("");
+  const [roleuser, setRoleuser] = useState("");
 
   const navigate = useNavigate();
 
@@ -38,27 +38,30 @@ const RegisterForm = () => {
   };
 
   const handleRoleChange = (event) => {
-    setRole(event.target.value);
+    setRoleuser(event.target.value);
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    // const form = event.target;
     const dataUser = {
       name,
-      email,
       password,
-      telephone,
       city,
       address,
-      role,
+      email,
+      telephone,
+      roluser:roleuser
     };
     const respuestaRegister = await RegisterService(dataUser);
-    let {token, roluser} = respuestaRegister;
+    if(respuestaRegister===undefined) return new Error("respuesta Register vacia")
+    let {x_access_token:token} = respuestaRegister;
+    let {roluser} = respuestaRegister?.user;
     if(['admin','customer','deliveryman'].includes(roluser) && token!==undefined){
       localStorage.removeItem('x_access_token');
       localStorage.setItem('x_access_token', token);
       if(roluser==='customer') roluser='client';
+      console.log("rol",roluser);
+      
       navigate(`/${roluser}`);
     }
   };
@@ -158,114 +161,3 @@ const RegisterForm = () => {
 };
 
 export default RegisterForm;
-// import React, { useState } from "react";
-// import "./comp_registro.css";
-
-// const RegisterForm = () => {
-//   const [name, setName] = useState("");
-//   const [email, setEmail] = useState("");
-//   const [password, setPassword] = useState("");
-//   const [telephone, setTelephone] = useState("");
-
-//   const handleNameChange = (event) => {
-//     setName(event.target.value);
-//   };
-
-//   const handleEmailChange = (event) => {
-//     setEmail(event.target.value);
-//   };
-
-//   const handlePasswordChange = (event) => {
-//     setPassword(event.target.value);
-//   };
-
-//   const handleTelephone = (event) => {
-//     setTelephone(event.target.value);
-//   };
-
-//   const handleSubmit = (event) => {
-//     event.preventDefault();
-//     console.log(
-//       `Name: ${name} Email: ${email} Telephone: ${telephone} Password: ${password} `
-//     );
-//   };
-
-//   return (
-//     <div className="big-box">
-//       <div className="little-box">
-//         <h1>Register Form</h1>
-//         <form onSubmit={handleSubmit}>
-//           <div className="form-group">
-//             <label htmlFor="name">Complete name</label>
-//             <input
-//               type="text"
-//               placeholder="Complete name"
-//               value={name}
-//               onChange={handleNameChange}
-//               required
-//             />
-//           </div>
-//           <div className="form-group">
-//             <label htmlFor="email">Email</label>
-//             <input
-//               type="email"
-//               placeholder="User Email"
-//               value={email}
-//               onChange={handleEmailChange}
-//               required
-//             />
-//           </div>
-//           <div className="form-group">
-//             <label htmlFor="password">Password</label>
-//             <input
-//               type="password"
-//               placeholder="Password"
-//               value={password}
-//               onChange={handlePasswordChange}
-//               required
-//             />
-//           </div>
-//           <div className="form-group">
-//             <label htmlFor="telephone">Telephone</label>
-//             <input
-//               type="telephone"
-//               placeholder="Telephone"
-//               value={telephone}
-//               onChange={handleTelephone}
-//               required
-//             />
-//           </div>
-//           <div className="form-group">
-//             <label htmlFor="password">Address</label>
-//             <input
-//               type="password"
-//               placeholder="Password"
-//               value={password}
-//               onChange={handlePasswordChange}
-//               required
-//             />
-//           </div>
-//           <div className="form-group">
-//             <label htmlFor="password">Role</label>
-//             <input
-//               type="password"
-//               placeholder="Password"
-//               value={password}
-//               onChange={handlePasswordChange}
-//               required
-//             />
-//           </div>
-//           <div className="form-group">
-//             <label htmlFor="password">Role</label>
-
-//           </div>
-//           <div className="form-button">
-//             <button type="submit">Register</button>
-//           </div>
-//         </form>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default RegisterForm;
