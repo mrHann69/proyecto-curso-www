@@ -4,4 +4,6 @@
   background-image: url('./img3.jpg');
   background-size: cover;
   background-position: center;
+  min-width: 100%;
+  min-height: 100vh;
 }

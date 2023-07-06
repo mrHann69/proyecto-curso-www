@@ -10,20 +10,19 @@ import {
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import YupValidation from "../YupValidation.js";
 import { useState } from "react";
+import { useSelector, useDispatch } from 'react-redux';
 
 export default function  Modify(props){
+  const usr=useSelector(state=>state.user) 
 
-  const [name,setName]=useState(props.name);
-  const [email,setEmail]=useState(props.email);
-  const [phoneNumber,setPhoneNumber]=useState(props.phoneNumber);
-  const [password,setPassword]=useState(props.password);
+  const name=useSelector(state=>state.user.name);
+  const [email,setEmail]=useState(usr.email);
+  const [phoneNumber,setPhoneNumber]=useState(usr.phoneNumber);
+  const [password,setPassword]=useState(usr.password);
+  const [city,setCity]=useState(usr.city);
+  const [address,setAdress]=useState(usr.address);
 
-  const initialValue = {
-      name: props.name,
-      email: props.email,
-      phoneNumber: props.phoneNumber,
-      password: props.password,
-   };
+  const initialValue = useSelector(state=> state.user);
 
   const handleSubmit = (values, props) => {
     console.log(values);
@@ -39,7 +38,7 @@ export default function  Modify(props){
       <Grid item sm={3} xs={false}></Grid>
       <Grid item sm={6} xs={12}>
         <Paper>
-          <Box m={5} p={3}>
+          <Box m={3} p={3}>
             <Typography variant="h5">Modify user</Typography>
             <Formik
               initialValues={initialValue}
@@ -47,7 +46,6 @@ export default function  Modify(props){
               onSubmit={handleSubmit}
             >
               {(props) => {
-                const { name } = props.values;
                 return (
                   <Form>
                     {/* First Way */}
@@ -89,6 +87,32 @@ export default function  Modify(props){
                         props.errors.phoneNumber && props.touched.phoneNumber
                       }
                     />
+
+                    <TextField
+                      label="Address"
+                      name="address"
+                      fullWidth
+                      variant="outlined"
+                      margin="dense"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      helperText={<ErrorMessage name="address" />}
+                      error={props.errors.name && props.touched.name}
+                      required
+                    />
+                    <TextField
+                      label="City"
+                      name="city"
+                      fullWidth
+                      variant="outlined"
+                      margin="dense"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      helperText={<ErrorMessage name="city" />}
+                      error={props.errors.name && props.touched.name}
+                      required
+                    />
+
                     <Field
                       as={TextField}
                       label="Password"

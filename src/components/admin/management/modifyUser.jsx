@@ -3,7 +3,7 @@ import {useState} from "react";
 import Modify from './auxmodify/modify.jsx';
 import UserList from './auxmodify/UserList.jsx';
 
-import manageReducer from './reducers/manageReducer.js';
+import manageReducer from './reducer/manageReducer.js';
 import {  createStore  } from 'redux';
 import { Provider } from 'react-redux';
 

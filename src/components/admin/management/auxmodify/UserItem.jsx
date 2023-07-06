@@ -5,12 +5,14 @@ import Avatar from '@mui/material/Avatar';
 import AccountBox from '@mui/icons-material/AccountBox';
 import Button from '@mui/material/Button';
 import axios from 'axios';
-
+import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
 
 
 export default function UserItem(props){
     const [showComponent, setShowComponent] = useState(true);
+    const dispatch=useDispatch();
+
     const handleClickDelete=async ()=>{
 
         try{
@@ -32,7 +34,17 @@ export default function UserItem(props){
         }
         
     }
-    const handleClickupdate=()=>{
+    const handleClickupdate=async()=>{
+
+        const token=localStorage.getItem('x_access_token');
+        await axios.get(process.env.REACT_APP_BACKEND_URI+'/user'
+            ,{
+                params:{id:props.id},
+                headers:{x_access_token:token}
+            }).
+        then(response=>{
+            dispatch({type:'UPDATE_PERSONAL',user:response.data})                
+        })
         
     }
 
@@ -47,10 +59,11 @@ export default function UserItem(props){
                 </ListItemAvatar>
                 <ListItemText primary={props.primary} secondary={props.secondary}/>
                 <Button sx={{ backgroundColor: 'purple', width:'60px',height:'30px' }} onClick={handleClickupdate}>
-                   <ListItemText primary="Update" />
+                  Update 
                 </Button>
                 <Button sx={{ backgroundColor: 'red' ,width:'60px',height:'30px' }} onClick={handleClickDelete}>
-                    <ListItemText primary="Delete" />
+                    Delete
+                    
                 </Button>
             </ListItem>
         }

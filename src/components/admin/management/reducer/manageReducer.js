@@ -1,8 +1,11 @@
 const initialState={
     user:{
+      id: "",
       name: "",
       email: "",
       phoneNumber:"",
+      address:"",
+      city:"",
       address:"", 
       password: "",
     }
